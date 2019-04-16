@@ -35,11 +35,7 @@ class MultiCohort:
         param_generator = ParameterGenerator(therapy=therapy)
 
         # create as many sets of parameters as the number of cohorts
-        for i in range(len(self.ids)):
-            # create a new random number generator for each parameter set
-            rng = RVGs.RNG(seed=i)
-            # get and store a new set of parameter
-            self.param_sets.append(param_generator.get_new_parameters(rng=rng))
+
 
     def simulate(self, sim_length):
         """ simulates all cohorts
