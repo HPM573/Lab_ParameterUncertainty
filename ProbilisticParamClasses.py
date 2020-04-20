@@ -23,10 +23,11 @@ class ParameterGenerator:
     def __init__(self, therapy):
 
         self.therapy = therapy
-        self.probMatrixRVG = []     # list of dirichlet distributions for transition probabilities
+        self.probMatrixRVG = []  # list of dirichlet distributions for transition probabilities
         self.lnRelativeRiskRVG = None  # normal distribution for the natural log of the treatment relative risk
         self.annualStateCostRVG = []  # list of gamma distributions for the annual cost of states
         self.annualStateUtilityRVG = []  # list of beta distributions for the annual utility of states
+        self.annualTreatmentCost = None  # gamma distribution for treatment cost
 
         # create Dirichlet distributions for transition probabilities
 
@@ -43,6 +44,9 @@ class ParameterGenerator:
 
 
         # create gamma distributions for annual state cost
+
+
+        # create a gamma distribution for annual treatment cost
 
 
         # create beta distributions for annual state utility
@@ -66,19 +70,19 @@ class ParameterGenerator:
         # calculate transition probabilities between hiv states
         if self.therapy == Therapies.MONO:
             # calculate transition probability matrix for the mono therapy
-            param.rateMatrix = get_rate_matrix_mono(trans_prob_matrix=prob_matrix)
+            param.rateMatrix = get_trans_rate_matrix(trans_prob_matrix=prob_matrix)
 
         elif self.therapy == Therapies.COMBO:
             # calculate transition probability matrix for the combination therapy
-            param.rateMatrix = get_rate_matrix_combo(
-                rate_matrix_mono=get_rate_matrix_mono(trans_prob_matrix=prob_matrix),
+            param.rateMatrix = get_trans_rate_matrix_combo(
+                rate_matrix_mono=get_trans_rate_matrix(trans_prob_matrix=prob_matrix),
                 combo_rr=rr)
 
         # sample from gamma distributions that are assumed for annual state costs
 
+        # sample from the gamma distribution that is assumed for the annual treatment cost
 
         # sample from beta distributions that are assumed for annual state utilities
-
 
         # return the parameter set
         return param
