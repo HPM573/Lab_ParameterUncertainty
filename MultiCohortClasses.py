@@ -35,15 +35,12 @@ class MultiCohort:
         :param sim_length: simulation length
         """
 
-        # create cohorts
-        cohorts = []
         for i in range(len(self.ids)):
-            cohorts.append(Cohort(id=self.ids[i],
-                                  pop_size=self.popSize,
-                                  parameters=self.param_sets[i])
-                           )
+            # create a cohort
+            cohort = Cohort(id=self.ids[i],
+                            pop_size=self.popSize,
+                            parameters=self.param_sets[i])
 
-        for cohort in cohorts:
             # simulate the cohort
             cohort.simulate(sim_length=sim_length)
 
