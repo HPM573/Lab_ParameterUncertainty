@@ -27,7 +27,7 @@ class ParameterGenerator:
         self.lnRelativeRiskRVG = None  # normal distribution for the natural log of the treatment relative risk
         self.annualStateCostRVG = []  # list of gamma distributions for the annual cost of states
         self.annualStateUtilityRVG = []  # list of beta distributions for the annual utility of states
-        self.annualTreatmentCost = None  # gamma distribution for treatment cost
+        self.annualTreatmentCostRVG = None  # gamma distribution for treatment cost
 
         # create Dirichlet distributions for transition probabilities
 

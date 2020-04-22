@@ -15,7 +15,7 @@ class MultiCohort:
         """
         self.ids = ids
         self.popSize = pop_size
-        self.param_sets = []  # list of parameter sets each of which corresponds to a cohort
+        self.paramSets = []  # list of parameter sets each of which corresponds to a cohort
         self.multiCohortOutcomes = MultiCohortOutcomes()
 
         # create parameter sets
@@ -39,7 +39,7 @@ class MultiCohort:
             # create a cohort
             cohort = Cohort(id=self.ids[i],
                             pop_size=self.popSize,
-                            parameters=self.param_sets[i])
+                            parameters=self.paramSets[i])
 
             # simulate the cohort
             cohort.simulate(sim_length=sim_length)
